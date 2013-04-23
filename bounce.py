@@ -2,6 +2,10 @@
 # A template for bouncing balls physics simulation.
 import pygame
 
+# Import absolute value function
+# example: fabs(-5) = 5
+from math import fabs
+
 # Class for representing a ball. Probably no point in changing this for the bouncing balls lab.
 class Ball:
     def __init__(self, color, center_x, center_y, radius, dx, dy):
@@ -19,6 +23,7 @@ black    = (   0,   0,   0)
 white    = ( 255, 255, 255)
 green    = (   0, 255,   0)
 red      = ( 255,   0,   0)
+blue     = (   0,   0, 255)
  
 pygame.init()
   
@@ -36,8 +41,8 @@ done = False
 clock = pygame.time.Clock()
 
 # Define balls and add them to array.
-ball_1 = Ball(white, 50, 50, 50, 5, 5)
-ball_2 = Ball(green, 500, 300, 30, 6, 6)
+ball_1 = Ball(white, 50, 50, 50, 3, 3)
+ball_2 = Ball(green, 500, 300, 30, 4, 4)
 myBalls = [ball_1, ball_2]
 
  
@@ -64,14 +69,12 @@ while done == False:
         # Move the ball         
         ball.x += ball.dx
         ball.y += ball.dy
-     
-    # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
-     
-    # Go ahead and update the screen with what we've drawn.
+          
+    # Update screen with new drawings. Don't draw new stuff after this line.
     pygame.display.flip()
  
     # Limit to 20 frames per second
-    clock.tick(20)
+    clock.tick(40)
      
 # Close the window and quit.
 pygame.quit()
